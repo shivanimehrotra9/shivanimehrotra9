@@ -30,7 +30,7 @@ pipeline{
         stage("Get the list of Changed Files"){
             steps{
                 echo "******************** List of files changed in this PR: ${env.CHANGE_ID} ********************"
-                sh 'git diff-tree --name-only $(git merge-base ${env.BRANCH_NAME} HEAD) HEAD'
+                sh 'git --no-pager diff origin/$CHANGE_TARGET --name-only'
 
             }
             post{
