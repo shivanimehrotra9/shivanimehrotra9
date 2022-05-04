@@ -1,9 +1,7 @@
 def REPOSITORY_NAME = scm.getUserRemoteConfigs()[0].getUrl().tokenize('/').last().split("\\.")[0]
 def SLACK_CHANNEL = "hagrid-airflow"
 pipeline{
-    // agent{
-    //     label "node-gcp"
-    // }
+    agent any
     stages{
         stage("Details"){
             steps{
