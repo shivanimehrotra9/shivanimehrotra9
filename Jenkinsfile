@@ -14,17 +14,6 @@ pipeline{
                 echo "SLACK CHANNEL: $SLACK_CHANNEL"
 
             }
-            post{
-                always{
-                    echo "========always========"
-                }
-                success{
-                    echo "========A executed successfully========"
-                }
-                failure{
-                    echo "========A execution failed========"
-                }
-            }
         }
 
         stage("Get the list of Changed Files"){
@@ -32,17 +21,6 @@ pipeline{
                 echo "******************** List of files changed in this PR: ${env.CHANGE_ID} ********************"
                 sh 'git --no-pager diff origin/$CHANGE_TARGET --name-only'
 
-            }
-            post{
-                always{
-                    echo "========always========"
-                }
-                success{
-                    echo "========A executed successfully========"
-                }
-                failure{
-                    echo "========A execution failed========"
-                }
             }
         }
     }
