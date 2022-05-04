@@ -19,7 +19,7 @@ pipeline{
         stage("Get the list of Changed Files"){
             steps{
                 echo "******************** List of files changed in this PR: ${env.CHANGE_ID} ********************"
-                sh 'git --no-pager diff origin/$CHANGE_TARGET --name-only'
+                sh 'git --no-pager diff origin/main --name-only'
 
             }
         }
