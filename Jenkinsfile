@@ -11,7 +11,7 @@ pipeline{
                 echo "******************** Details ********************"
                 echo "REPOSITORY NAME: $REPOSITORY_NAME"
                 echo "BRANCH NAME: ${env.BRANCH_NAME}"
-                echo "TRIGGERED BY PR: $(CHANGE_ID)"
+                echo "TRIGGERED BY PR: ${CHANGE_ID}"
                 echo "SLACK CHANNEL: $SLACK_CHANNEL"
 
             }
@@ -30,7 +30,7 @@ pipeline{
 
         stage("Get the list of Changed Files"){
             steps{
-                echo "******************** List of files changed in this PR: $(CHANGE_ID) ********************"
+                echo "******************** List of files changed in this PR: ${CHANGE_ID} ********************"
                 
 
             }
