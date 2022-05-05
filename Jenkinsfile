@@ -1,6 +1,6 @@
 def REPOSITORY_NAME = scm.getUserRemoteConfigs()[0].getUrl().tokenize('/').last().split("\\.")[0]
 def SLACK_CHANNEL = "hagrid-airflow"
-def GIT_BRANCH_NAME = ${GIT_BRANCH.split("/")[1]}
+def GIT_BRANCH_NAME = GIT_BRANCH.split("/")[1]
 def dummy_pr = 1
 pipeline{
     agent any
