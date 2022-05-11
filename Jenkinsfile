@@ -1,6 +1,7 @@
 def REPOSITORY_NAME = scm.getUserRemoteConfigs()[0].getUrl().tokenize('/').last().split("\\.")[0]
 def SLACK_CHANNEL = "hagrid-airflow"
 def dummy_pr = 1
+def github_api_call
 pipeline{
     agent any
     stages{
@@ -23,6 +24,11 @@ pipeline{
 
 
             }
+        }
+
+        stage("Load Groovy file") {
+            github_api_call = load 'test-github-api.groovy'
+            github_api_call.get_changed_files()
         }
     }
     post{
