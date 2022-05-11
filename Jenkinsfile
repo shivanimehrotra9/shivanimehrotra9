@@ -27,8 +27,11 @@ pipeline{
         }
 
         stage("Load Groovy file") {
-            github_api_call = load 'test-github-api.groovy'
-            github_api_call.get_changed_files()
+            steps{
+                github_api_call = load 'test-github-api.groovy'
+                github_api_call.get_changed_files()
+            }
+            
         }
     }
     post{
