@@ -2,6 +2,7 @@ def REPOSITORY_NAME = scm.getUserRemoteConfigs()[0].getUrl().tokenize('/').last(
 def SLACK_CHANNEL = "hagrid-airflow"
 
 def dummy_pr = 1
+def github_api_call
 pipeline{
     environment {
         BRANCH_NAME = "${GIT_BRANCH.split("/")[1]}"
@@ -25,7 +26,16 @@ pipeline{
                 echo "******************** List of files changed in this PR: ${env.CHANGE_ID} ********************"
                 sh 'git --no-pager diff origin/check/pr_changed_files --name-only'
 
+
             }
+        }
+
+        stage("Load Groovy file") {
+            steps{
+                github_api_call = load 'test-github-api.groovy'
+                github_api_call.get_changed_files()
+            }
+            
         }
     }
     post{
